@@ -5,7 +5,7 @@ export const showToastNotification = (icon = "", title) => {
     toast: true,
     position: "top-end",
     showConfirmButton: false,
-    timer: 3000,
+    timer: 2000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -41,6 +41,13 @@ export const messageConfirm = (icon, text, title, data) => {
     text: "Apakah kamu yakin menghapus postingan ini?",
     icon: "warning",
     showCancelButton: true,
+    showCloseButton: true,
+    showClass: {
+      popup: "animate__animated animate__fadeInDown",
+    },
+    hideClass: {
+      popup: "animate__animated animate__fadeOutUp",
+    },
     confirmButtonColor: "#d33",
     cancelButtonColor: "#3085d6",
     confirmButtonText: "Ya, hapus",

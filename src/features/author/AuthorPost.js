@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ReactionButtons from "./ReactionButtons";
-import PostTimeAgo from "./PostTimeAgo";
-import PostAuthor from "./PostAuthor";
+import ReactionButtons from "../posts/ReactionButtons";
+import PostTimeAgo from "../posts/PostTimeAgo";
+import PostAuthor from "../posts/PostAuthor";
 
-export default function PostFeed({ posts }) {
+export default function AuthorPost({ posts }) {
   const orderedPosts = posts
     .slice()
     .sort((a, b) => b.createdAt.localeCompare(a.date));
@@ -13,10 +13,7 @@ export default function PostFeed({ posts }) {
   return (
     <>
       {orderedPosts?.map((post, index) => (
-        <div
-          key={index}
-          className="animate__animated animate__bounceInUp animate__backInUp "
-        >
+        <div key={index} className="animate__animated animate__bounceInUp ">
           <Card className="postCard mb-3 " body>
             <div className="postTitle">
               <Link

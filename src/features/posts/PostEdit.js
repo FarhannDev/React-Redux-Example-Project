@@ -2,10 +2,11 @@ import { useRef, useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { updatePost } from "../../helpers/postHelper";
-import { selectPostById } from "./postSlice";
-import { selectAllUsers } from "../users/usersSlice";
-import { showMessageSuccess, showMessageError } from "../../utils/message";
+
+import { updatePost } from "../api/customPostsApi";
+import { selectPostById } from "../../utils/postsSlice";
+import { selectAllUsers } from "../../utils/usersSlice";
+import { showMessageError, showToastNotification } from "../../utils/message";
 
 import PostTitle from "./PostTitle";
 
@@ -45,7 +46,8 @@ export default function PostEdit() {
           })
         ).unwrap();
 
-        showMessageSuccess("Berhasil", "Postingan diperbarui");
+        // showMessageSuccess("Berhasil", "Postingan diperbarui");
+        showToastNotification("success", "Postingan diperbarui");
         navigate(`/posts/${id}`);
       } catch (error) {
         console.error("Failed to save the post", error);

@@ -2,17 +2,19 @@ import { useRef, useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addNewPost } from "../../helpers/postHelper";
-import { selectAllUsers } from "../users/usersSlice";
-import { showMessageSuccess, showMessageError } from "../../utils/message";
+import { addNewPost } from "../api/customPostsApi";
+import { selectAllUsers } from "../../utils/usersSlice";
+import { showMessageError, showToastNotification } from "../../utils/message";
 
-import PostTitle from "./PostTitle";
+import PostTitle from "../posts/PostTitle";
 
 export default function PostAdd() {
   const navigate = useNavigate();
   const inputRef = useRef();
   const dispatch = useDispatch();
+
   const users = useSelector(selectAllUsers);
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [userId, setUserId] = useState("");
@@ -23,14 +25,16 @@ export default function PostAdd() {
   const onAuthorChangeEventHandler = (e) => setUserId(e.target.value);
   const onSaveItems =
     [title, content, userId].every(Boolean) && addRequestStatus === "idle";
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (onSaveItems) {
       try {
         setAddRequestStatus("pending");
         dispatch(addNewPost({ title, body: content, userId })).unwrap();
-        showMessageSuccess("Berhasil", "Postingan ditambahkan");
-        navigate("/");
+        // showMessageSuccess("Berhasil", "Postingan ditambahkan");
+        showToastNotification("success", "Postingan ditambahkan");
+        navigate("/posts");
       } catch (error) {
         console.error("Failed to save the post", error);
       } finally {
@@ -40,6 +44,7 @@ export default function PostAdd() {
       return showMessageError("Gagal", "Periksa kembali postingan anda!");
     }
   };
+
   const usersOptions = users.map((user) => (
     <option key={user.id} value={user.id}>
       {user.name}
@@ -92,7 +97,7 @@ export default function PostAdd() {
                   </Form.Group>
 
                   <div className="d-flex justify-content-end py-3">
-                    <Link to="/" className="btn btn-dark rounded btn-md">
+                    <Link to="/posts" className="btn btn-dark rounded btn-md">
                       Batalkan
                     </Link>
                     <Button

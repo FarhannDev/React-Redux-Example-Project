@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deletePost } from "../../helpers/postHelper";
-import { selectPostById } from "./postSlice";
+import { deletePost } from "../api/customPostsApi";
+import { selectPostById } from "../../utils/postsSlice";
+import { showToastNotification } from "../../utils/message";
 import Swal from "sweetalert2";
 
 export default function PostSinglePage() {
@@ -16,20 +17,22 @@ export default function PostSinglePage() {
   const onDeleteHandler = () => {
     try {
       Swal.fire({
-        title: "Konfirmasi",
+        title: "Konfirmasi Hapus",
         text: "Apakah kamu yakin menghapus postingan ini?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
+        cancelButtonColor: "#1c1c1a",
         confirmButtonText: "Ya, hapus",
+        cancelButtonText: "Batalkan",
       }).then((result) => {
         if (result.isConfirmed) {
           setRequestStatus("pending");
           dispatch(deletePost({ id: post.id })).unwrap();
           // eslint-disable-next-line no-sequences, no-unused-expressions
-          Swal.fire("Berhasil", "Postingan dihapus", "success");
-          navigate("/");
+          // Swal.fire("Berhasil", "Postingan dihapus", "success");
+          showToastNotification("success", "Postingan dihapus");
+          navigate("/posts");
         }
       });
     } catch (error) {
@@ -45,9 +48,9 @@ export default function PostSinglePage() {
         <Row className="flex-column g-3">
           <Col>
             <div>
-              <Card body className="postCard">
+              <Card body className="postCardDetail">
                 <Link
-                  to="/"
+                  to="/posts"
                   className="btn btn-link p-0 text-white text-decoration-none mb-3"
                 >
                   <i className="fas fa-arrow-left"></i> Kembali
@@ -59,9 +62,7 @@ export default function PostSinglePage() {
                   </Card.Title>
                 </div>
                 <div className="py-3">
-                  <Card.Text>
-                    <p className="text-light text-start">{post.body}</p>
-                  </Card.Text>
+                  <Card.Text>{post.body}</Card.Text>
                 </div>
                 <div className="py-3">
                   <Card.Text>

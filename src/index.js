@@ -1,15 +1,17 @@
-import React, { StrictMode } from "react";
+import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-import { fetchUsers } from "./helpers/usersHelper";
-import { fetchPosts } from "./helpers/postHelper";
+import { fetchUsers } from "./features/api/customUsersApi";
+import { fetchPosts } from "./features/api/customPostsApi";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "animate.css";
+import "./styles/global.css";
+import "./styles/customFormBS.css";
 
 import App from "./App";
-// Styling import
-import "./styles/global.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 // Redux create store
 store.dispatch(fetchPosts());

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Form } from "react-bootstrap";
 
-export default function SearchPost({
+export default function AuthorSearchPost({
   title,
   posts,
   searchPosts,

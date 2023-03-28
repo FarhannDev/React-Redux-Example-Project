@@ -8,7 +8,7 @@ export default function PostAuthor({ userId }) {
   const author = users?.find((user) => user.id === userId);
   return (
     <span>
-      by{" "}
+      Posted by{" "}
       <i>
         <Link
           to={`/posts/author/${userId}`}

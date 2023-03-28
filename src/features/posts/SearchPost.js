@@ -13,8 +13,8 @@ export default function SearchPost({
   useEffect(() => {
     const filteredResult = posts?.filter(
       (filtered) =>
-        filtered.title.toLowerCase().includes(searchPosts.toLowerCase()) ||
-        filtered.body.toLowerCase().includes(searchPosts.toLowerCase())
+        filtered?.title.toLowerCase().includes(searchPosts.toLowerCase()) ||
+        filtered?.body.toLowerCase().includes(searchPosts.toLowerCase())
     );
     setSearchResult(filteredResult);
   }, [posts, searchPosts, setSearchResult]);

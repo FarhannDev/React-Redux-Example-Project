@@ -1,9 +1,13 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 export default function Homepage() {
   return (
     <>
+      <Helmet>
+        <title>Redux Blog - Home</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3 animate__animated animate__zoomInDown animate__bounce ">
         <Row className="flex-column g-3">
           <Col>

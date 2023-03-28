@@ -12,12 +12,15 @@ export default function SearchResult({ results }) {
 
   return (
     <>
-      {!results.length && <Message message="Postingan tidak ditemukan." />}
+      {!results.length && <Message message="Post not found." />}
       {results && (
         <>
           {orderedPostsResult?.map((result, index) => (
-            <div className="animate__animated animate__bounceInUp animate__backInUp">
-              <Card key={index} className="postCard mb-3" body>
+            <div
+              key={index}
+              className="animate__animated animate__bounceInUp animate__backInUp"
+            >
+              <Card className="postCard mb-3" body>
                 <div className="postTitle">
                   <a href="#" className="text-white text-decoration-none">
                     {result.title}

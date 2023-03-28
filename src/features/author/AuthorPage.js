@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { selectUserById } from "../../utils/usersSlice";
@@ -22,6 +23,10 @@ export default function AuthorPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Posts By {user?.name}</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3">
         <Row className="flex-column g-3">
           <Col>
@@ -30,7 +35,7 @@ export default function AuthorPage() {
                 to="/posts"
                 className="btn btn-link p-0 text-white text-decoration-none mb-3"
               >
-                <i className="fas fa-arrow-left"></i> Kembali
+                <i className="fas fa-arrow-left"></i> Back To Posts
               </Link>
 
               <div>
@@ -41,7 +46,7 @@ export default function AuthorPage() {
 
               <div>
                 <AuthorSearchPost
-                  title={`Search posts by ${user?.name} ...`}
+                  title={`Search...`}
                   posts={authorPost}
                   searchPosts={searchPosts}
                   setSearchPosts={setSearchPosts}

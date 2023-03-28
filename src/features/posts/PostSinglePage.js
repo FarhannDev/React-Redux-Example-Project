@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { deletePost } from "../api/customPostsApi";
 import { selectPostById } from "../../utils/postsSlice";
 import { showToastNotification } from "../../utils/message";
+import PostAuthor from "../posts/PostAuthor";
+import PostTimeAgo from "../posts/PostTimeAgo";
 import Swal from "sweetalert2";
+import ReactionButtons from "./ReactionButtons";
 
 export default function PostSinglePage() {
   const { id } = useParams();
@@ -17,21 +21,21 @@ export default function PostSinglePage() {
   const onDeleteHandler = () => {
     try {
       Swal.fire({
-        title: "Konfirmasi Hapus",
-        text: "Apakah kamu yakin menghapus postingan ini?",
+        title: "Delete Confirm",
+        text: "Are you sure you want to delete this post?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
         cancelButtonColor: "#1c1c1a",
-        confirmButtonText: "Ya, hapus",
-        cancelButtonText: "Batalkan",
+        confirmButtonText: "Yes, Delete",
+        cancelButtonText: "Cancel",
       }).then((result) => {
         if (result.isConfirmed) {
           setRequestStatus("pending");
           dispatch(deletePost({ id: post.id })).unwrap();
           // eslint-disable-next-line no-sequences, no-unused-expressions
           // Swal.fire("Berhasil", "Postingan dihapus", "success");
-          showToastNotification("success", "Postingan dihapus");
+          showToastNotification("success", "Your post has been deleted");
           navigate("/posts");
         }
       });
@@ -44,6 +48,10 @@ export default function PostSinglePage() {
 
   return (
     <>
+      <Helmet>
+        <title>{post?.title}</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3">
         <Row className="flex-column g-3">
           <Col>
@@ -51,9 +59,9 @@ export default function PostSinglePage() {
               <Card body className="postCardDetail">
                 <Link
                   to="/posts"
-                  className="btn btn-link p-0 text-white text-decoration-none mb-3"
+                  className="btn btn-link p-0 text-white text-decoration-none"
                 >
-                  <i className="fas fa-arrow-left"></i> Kembali
+                  <i className="fas fa-arrow-left"></i> Back To Posts
                 </Link>
                 <hr />
                 <div>
@@ -64,7 +72,16 @@ export default function PostSinglePage() {
                 <div className="py-3">
                   <Card.Text>{post.body}</Card.Text>
                 </div>
-                <div className="py-3">
+                <div>
+                  <span className="d-flex justify-content-arround">
+                    <PostAuthor userId={post.userId} />
+                    <PostTimeAgo timestamp={post.createdAt} />
+                  </span>
+                  <div className="mb-3">
+                    <ReactionButtons post={post} />
+                  </div>
+                </div>
+                <div className="py-3 pt-3 mb-2">
                   <Card.Text>
                     <Button
                       variant="danger"
@@ -72,13 +89,13 @@ export default function PostSinglePage() {
                       size="md"
                       onClick={onDeleteHandler}
                     >
-                      Hapus postingan
+                      Delete Posts
                     </Button>
                     <Link
                       to={`/posts/${post.id}/edit`}
                       className="btn btn-md btn-danger rounded d-block w-100"
                     >
-                      Perbarui postingan
+                      Update Posts
                     </Link>
                   </Card.Text>
                 </div>

@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 import { updatePost } from "../api/customPostsApi";
 import { selectPostById } from "../../utils/postsSlice";
 import { selectAllUsers } from "../../utils/usersSlice";
@@ -47,7 +47,7 @@ export default function PostEdit() {
         ).unwrap();
 
         // showMessageSuccess("Berhasil", "Postingan diperbarui");
-        showToastNotification("success", "Postingan diperbarui");
+        showToastNotification("success", "Your post is updated");
         navigate(`/posts/${id}`);
       } catch (error) {
         console.error("Failed to save the post", error);
@@ -55,7 +55,7 @@ export default function PostEdit() {
         setAddRequestStatus("idle");
       }
     } else {
-      return showMessageError("Gagal", "Periksa kembali postingan anda!");
+      return showMessageError("Oppsss....", "Double check your post!");
     }
   };
   const usersOptions = users.map((user) => (
@@ -66,15 +66,19 @@ export default function PostEdit() {
 
   return (
     <>
+      <Helmet>
+        <title>Posts Edit - {post?.title}</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3">
         <Row className="flex-column g-3">
           <Col>
-            <PostTitle title="Edit Postingan" />
+            <PostTitle title="Edit Posts" />
             <div className="py-3">
               <Card body className="bg-dark">
                 <Form onSubmit={onSubmitHandler} autoComplete="off">
                   <Form.Group className="mb-3">
-                    <Form.Label>Judul postingan</Form.Label>
+                    <Form.Label>Post Title</Form.Label>
                     <Form.Control
                       ref={inputRef}
                       value={title}
@@ -84,12 +88,12 @@ export default function PostEdit() {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Penulis</Form.Label>
+                    <Form.Label>Author</Form.Label>
                     <Form.Select
                       value={userId}
                       onChange={onAuthorChangeEventHandler}
                     >
-                      <option value="">---Pilih Penulis---</option>
+                      <option value="">---Select Author---</option>
                       {usersOptions}
                     </Form.Select>
                   </Form.Group>
@@ -98,14 +102,14 @@ export default function PostEdit() {
                     className="mb-3"
                     controlId="exampleForm.ControlTextarea1"
                   >
-                    <Form.Label>Kontent</Form.Label>
+                    <Form.Label>Content</Form.Label>
                     <Form.Control
                       ref={inputRef}
                       value={content}
                       onChange={onContentChangeEventHandler}
                       as="textarea"
                       rows={6}
-                      placeholder="Tuliskan isi kontent...."
+                      placeholder="Write content..."
                     />
                   </Form.Group>
 
@@ -114,7 +118,7 @@ export default function PostEdit() {
                       to={`/posts/${id}`}
                       className="btn btn-dark rounded btn-md"
                     >
-                      Batalkan
+                      Cancel
                     </Link>
                     <Button
                       disabled={!onSaveItems}
@@ -122,7 +126,7 @@ export default function PostEdit() {
                       variant="primary"
                       type="submit"
                     >
-                      Perbarui Postingan
+                      Update Posts
                     </Button>
                   </div>
                 </Form>

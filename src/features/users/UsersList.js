@@ -1,4 +1,5 @@
 import { Card, Col, Container, Row, Table } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectAllUsers } from "../../utils/usersSlice";
@@ -33,6 +34,10 @@ export default function UsersList() {
 
   return (
     <>
+      <Helmet>
+        <title>Redux Blog - All Users</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3  ">
         <Row className="flex-column g-3">
           <Col>

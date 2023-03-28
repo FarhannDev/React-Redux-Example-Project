@@ -3,19 +3,18 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import PostTitle from "./PostTitle";
-import Loading from "../../components/utils/Loading";
+import { Helmet } from "react-helmet";
 import {
   selectAllPosts,
   getPostsStatus,
   getPostsError,
 } from "../../utils/postsSlice";
 
-import {
-  LazyPostFeed,
-  LazyPostSearch,
-  LazyPostSearchResults,
-} from "../../utils/loaders";
+import Loading from "../../components/utils/Loading";
+import PostTitle from "../posts/PostTitle";
+import PostFeed from "../posts/PostFeed";
+import SearchPost from "../posts/SearchPost";
+import SearchResult from "../posts/SearchResult";
 
 export default function PostHome() {
   const posts = useSelector(selectAllPosts);
@@ -29,12 +28,16 @@ export default function PostHome() {
       {postsStatus === "loading" && <Loading title="Sedang memuat..." />}
       {postsStatus === "error" && <Loading title={error} />}
       {postsStatus === "succeeded" && (
-        <div className="  ">
+        <div>
+          <Helmet>
+            <title>Redux Blog - All Posts</title>
+            <meta name="description" content="Helmet application" />
+          </Helmet>
           <Container className="d-block w-100 pt-5 py-5 mt-3">
             <Row className="flex-column g-3">
               <Col>
                 <div>
-                  <PostTitle title="Semua postingan" />
+                  <PostTitle title="All Posts List" />
                 </div>
                 <div>
                   <div className="py-3 d-flex justify-content-end">
@@ -42,14 +45,14 @@ export default function PostHome() {
                       to="/posts/create"
                       className="btn btn-dark rounded btn-lg"
                     >
-                      Tambah postingan baru
+                      Create New Posts
                     </Link>
                   </div>
                 </div>
                 <div>
                   <div className="mb-3 pt-3">
-                    <LazyPostSearch
-                      title="Cari semua postingan..."
+                    <SearchPost
+                      title="Search All Posts..."
                       posts={posts}
                       searchPosts={searchPosts}
                       setSearchPosts={setSearchPosts}
@@ -58,10 +61,8 @@ export default function PostHome() {
                   </div>
                 </div>
                 <div>
-                  {searchPosts && (
-                    <LazyPostSearchResults results={searchResults} />
-                  )}
-                  {!searchPosts && <LazyPostFeed posts={posts} />}
+                  {searchPosts && <SearchResult results={searchResults} />}
+                  {!searchPosts && <PostFeed posts={posts} />}
                 </div>
               </Col>
             </Row>

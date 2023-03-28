@@ -3,13 +3,13 @@ import { Helmet } from "react-helmet";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deletePost } from "../api/customPostsApi";
-import { selectPostById } from "../../utils/postsSlice";
+import { deletePost } from "../../app/services/postsApi";
+import { selectPostById } from "../../app/helpers/postsSlice";
 import { showToastNotification } from "../../utils/message";
 import PostAuthor from "../posts/PostAuthor";
 import PostTimeAgo from "../posts/PostTimeAgo";
+import ReactionButtons from "../posts/ReactionButtons";
 import Swal from "sweetalert2";
-import ReactionButtons from "./ReactionButtons";
 
 export default function PostSinglePage() {
   const { id } = useParams();

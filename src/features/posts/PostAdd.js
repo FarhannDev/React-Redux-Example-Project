@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
-import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addNewPost } from "../api/customPostsApi";
-import { selectAllUsers } from "../../utils/usersSlice";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet";
+import { addNewPost } from "../../app/services/postsApi";
+import { selectAllUsers } from "../../app/helpers/usersSlice";
 import { showMessageError, showToastNotification } from "../../utils/message";
 
 import PostTitle from "../posts/PostTitle";
-import { Helmet } from "react-helmet";
 
 export default function PostAdd() {
   const navigate = useNavigate();

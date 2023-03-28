@@ -1,6 +1,7 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 export default function Homepage() {
   return (
     <>

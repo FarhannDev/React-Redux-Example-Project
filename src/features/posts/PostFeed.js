@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ReactionButtons from "./ReactionButtons";
-import PostTimeAgo from "./PostTimeAgo";
-import PostAuthor from "./PostAuthor";
+import ReactionButtons from "../posts/ReactionButtons";
+import PostTimeAgo from "../posts/PostTimeAgo";
+import PostAuthor from "../posts/PostAuthor";
 
 export default function PostFeed({ posts }) {
   const orderedPosts = posts

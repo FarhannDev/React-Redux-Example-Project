@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Card } from "react-bootstrap";
-import ReactionButtons from "./ReactionButtons";
-import PostTimeAgo from "./PostTimeAgo";
-import PostAuthor from "./PostAuthor";
+import { Link } from "react-router-dom";
+import ReactionButtons from "../posts/ReactionButtons";
+import PostTimeAgo from "../posts/PostTimeAgo";
+import PostAuthor from "../posts/PostAuthor";
 import Message from "../../components/utils/Message";
 
 export default function SearchResult({ results }) {
@@ -22,9 +23,12 @@ export default function SearchResult({ results }) {
             >
               <Card className="postCard mb-3" body>
                 <div className="postTitle">
-                  <a href="#" className="text-white text-decoration-none">
+                  <Link
+                    to={`/posts/${result.id}`}
+                    className="text-white text-decoration-none"
+                  >
                     {result.title}
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="postBody">{`${result.body.slice(

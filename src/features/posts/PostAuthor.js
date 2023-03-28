@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectAllUsers } from "../../utils/usersSlice";
+import { selectAllUsers } from "../../app/helpers/usersSlice";
 
 export default function PostAuthor({ userId }) {
   const users = useSelector(selectAllUsers);

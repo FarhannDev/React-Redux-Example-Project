@@ -8,7 +8,7 @@ import {
   selectAllPosts,
   getPostsStatus,
   getPostsError,
-} from "../../utils/postsSlice";
+} from "../../app/helpers/postsSlice";
 
 import Loading from "../../components/utils/Loading";
 import PostTitle from "../posts/PostTitle";

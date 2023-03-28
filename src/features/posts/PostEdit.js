@@ -3,9 +3,9 @@ import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { updatePost } from "../api/customPostsApi";
-import { selectPostById } from "../../utils/postsSlice";
-import { selectAllUsers } from "../../utils/usersSlice";
+import { updatePost } from "../../app/services/postsApi";
+import { selectPostById } from "../../app/helpers/postsSlice";
+import { selectAllUsers } from "../../app/helpers/usersSlice";
 import { showMessageError, showToastNotification } from "../../utils/message";
 
 import PostTitle from "./PostTitle";

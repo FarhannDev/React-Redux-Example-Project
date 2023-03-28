@@ -2,7 +2,7 @@ import { Card, Col, Container, Row, Table } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectAllUsers } from "../../utils/usersSlice";
+import { selectAllUsers } from "../../app/helpers/usersSlice";
 
 export default function UsersList() {
   const users = useSelector(selectAllUsers);

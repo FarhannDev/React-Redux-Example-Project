@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
-import { selectUserById } from "../../utils/usersSlice";
-import { selectPostByUser } from "../../utils/postsSlice";
+import { selectUserById } from "../../app/helpers/usersSlice";
+import { selectPostByUser } from "../../app/helpers/postsSlice";
 
 import PostTitle from "../posts/PostTitle";
 import AuthorPost from "../author/AuthorPost";

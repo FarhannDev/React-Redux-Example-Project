@@ -5,7 +5,7 @@ export const LazyPageNotFound = lazy(() =>
   import("../components/utils/PageNotFound")
 );
 
-export const LazyHomepage = lazy(() => import("../components/Homepage"));
+export const LazyHomepage = lazy(() => import("../features/Homepage"));
 export const LazyPostPage = lazy(() => import("../features/posts/PostHome"));
 export const LazyPostAdd = lazy(() => import("../features/posts/PostAdd"));
 export const LazyPostEdit = lazy(() => import("../features/posts/PostEdit"));

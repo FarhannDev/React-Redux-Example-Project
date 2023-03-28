@@ -10,7 +10,7 @@ import {
   addNewPost,
   updatePost,
   deletePost,
-} from "../features/api/customPostsApi";
+} from "../services/postsApi";
 
 const postsAdapter = createEntityAdapter({
   sortComparer: (a, b) => b.createdAt.localeCompare(a.createdAt),

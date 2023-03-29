@@ -20,8 +20,8 @@ export const router = createBrowserRouter(
       <Route index element={<LazyHomepage />} />
       <Route exact path="/posts" element={<LazyPostPage />} />
       <Route exact path="/posts/create" element={<LazyPostAdd />} />
-      <Route exact path="/posts/:id" element={<LazyPostSinglePage />} />
-      <Route exact path="/posts/:id/edit" element={<LazyPostEdit />} />
+      <Route exact path="/posts/:id?" element={<LazyPostSinglePage />} />
+      <Route exact path="/posts/:id?/edit" element={<LazyPostEdit />} />
       <Route exact path="/posts/author/:userId" element={<LazyPostAuthor />} />
       <Route exact path="/users" element={<LazyUserPage />} />
     </Route>

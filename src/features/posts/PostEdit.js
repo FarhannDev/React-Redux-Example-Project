@@ -55,7 +55,7 @@ export default function PostEdit() {
         setAddRequestStatus("idle");
       }
     } else {
-      return showMessageError("Oppsss....", "Double check your post!");
+      return showMessageError("Oppsss....", "Please check your post!");
     }
   };
   const usersOptions = users.map((user) => (
@@ -73,9 +73,9 @@ export default function PostEdit() {
       <Container className="d-block w-100 pt-5 py-5 mt-3">
         <Row className="flex-column g-3">
           <Col>
-            <PostTitle title="Edit Posts" />
             <div className="py-3">
-              <Card body className="bg-dark">
+              <Card body className="postCard">
+                <PostTitle title="Edit Posts" />
                 <Form onSubmit={onSubmitHandler} autoComplete="off">
                   <Form.Group className="mb-3">
                     <Form.Label>Post Title</Form.Label>
@@ -93,7 +93,7 @@ export default function PostEdit() {
                       value={userId}
                       onChange={onAuthorChangeEventHandler}
                     >
-                      <option value="">---Select Author---</option>
+                      <option value="">Select Author</option>
                       {usersOptions}
                     </Form.Select>
                   </Form.Group>
@@ -108,7 +108,7 @@ export default function PostEdit() {
                       value={content}
                       onChange={onContentChangeEventHandler}
                       as="textarea"
-                      rows={6}
+                      rows={8}
                       placeholder="Write content..."
                     />
                   </Form.Group>

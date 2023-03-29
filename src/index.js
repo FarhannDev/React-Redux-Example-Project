@@ -1,6 +1,7 @@
 import { store } from "./app/store/index";
 import { fetchUsers } from "./app/services/usersApi";
 import { fetchPosts } from "./app/services/postsApi";
+import { fetchComments } from "./app/services/commentsApi";
 import { router } from "./app/router/index";
 import { RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -15,6 +16,7 @@ import "./styles/global.css";
 
 // Redux create store
 store.dispatch(fetchPosts());
+store.dispatch(fetchComments());
 store.dispatch(fetchUsers());
 ReactDOMClient.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

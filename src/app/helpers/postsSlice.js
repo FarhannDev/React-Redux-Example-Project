@@ -117,14 +117,14 @@ const postsSlice = createSlice({
           rocket: 0,
           coffee: 0,
         };
-        console.log(action.payload);
+        // console.log(action.payload);
         // state.posts.push(action.payload);
         postsAdapter.addOne(state, action.payload);
       })
       .addCase(updatePost.fulfilled, (state, action) => {
         if (!action.payload?.id) {
           console.log("Update could not complete");
-          console.log(action.payload);
+          // console.log(action.payload);
           return;
         } else {
           // const { id } = action.payload;

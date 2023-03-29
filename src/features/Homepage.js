@@ -24,21 +24,22 @@ export default function Homepage() {
                   <Card className="postCardDetail animate__animated ">
                     <Card.Body>
                       <div>
-                        <h3 className="text-uppercase text-white">All Posts</h3>
+                        <h3 className="text-uppercase text-white pt-3">
+                          See All Posts Lists
+                        </h3>
                       </div>
                       <div>
                         <Card.Text className="py-3 mb-3">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
+                          Search and find all post listings
                         </Card.Text>
                       </div>
 
-                      <div>
+                      <div className="pt-3">
                         <Link
                           to="/posts"
                           className="btn btn-primary btn-md rounded d-block w-100 "
                         >
-                          Read More...
+                          Read More
                         </Link>
                       </div>
                     </Card.Body>
@@ -48,21 +49,23 @@ export default function Homepage() {
                   <Card className="postCardDetail animate__animated ">
                     <Card.Body>
                       <div>
-                        <h3 className="text-uppercase text-white">All Users</h3>
+                        <h3 className="text-uppercase text-white pt-3">
+                          {" "}
+                          See All Users Lists
+                        </h3>
                       </div>
                       <div>
                         <Card.Text className="py-3 mb-3">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
+                          Search and find all users listings
                         </Card.Text>
                       </div>
 
-                      <div>
+                      <div className="pt-3">
                         <Link
                           to="/users"
                           className="btn btn-primary btn-md rounded d-block w-100 "
                         >
-                          Read More...
+                          Read More
                         </Link>
                       </div>
                     </Card.Body>

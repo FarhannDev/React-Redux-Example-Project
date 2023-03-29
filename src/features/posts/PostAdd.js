@@ -13,7 +13,6 @@ export default function PostAdd() {
   const navigate = useNavigate();
   const inputRef = useRef();
   const dispatch = useDispatch();
-
   const users = useSelector(selectAllUsers);
 
   const [title, setTitle] = useState("");
@@ -42,7 +41,7 @@ export default function PostAdd() {
         setAddRequestStatus("idle");
       }
     } else {
-      return showMessageError("Oppsss...", "Double check your post!");
+      return showMessageError("Oppsss...", "Please check your post!");
     }
   };
 
@@ -61,9 +60,9 @@ export default function PostAdd() {
       <Container className="d-block w-100 pt-5 py-5 mt-3">
         <Row className="flex-column g-3">
           <Col>
-            <PostTitle title="New Posts" />
             <div className="py-3">
-              <Card body className="bg-dark">
+              <Card body className="postCard ">
+                <PostTitle title="New Posts" />
                 <Form onSubmit={onSubmitHandler} autoComplete="off">
                   <Form.Group className="mb-3">
                     <Form.Label>Post Title</Form.Label>
@@ -81,7 +80,7 @@ export default function PostAdd() {
                       value={userId}
                       onChange={onAuthorChangeEventHandler}
                     >
-                      <option value="">---Select Author----</option>
+                      <option value="">Select Author</option>
                       {usersOptions}
                     </Form.Select>
                   </Form.Group>
@@ -96,7 +95,7 @@ export default function PostAdd() {
                       value={content}
                       onChange={onContentChangeEventHandler}
                       as="textarea"
-                      rows={6}
+                      rows={8}
                       placeholder="Write content...."
                     />
                   </Form.Group>

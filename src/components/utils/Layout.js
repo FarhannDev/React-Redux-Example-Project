@@ -5,7 +5,6 @@ import Header from "./Header";
 export default function Layout() {
   return (
     <>
-      {/* <Navigation /> */}
       <Header />
       <Container fluid className="d-block w-100 py-5">
         <Row className="justify-content-center align-content-center">

@@ -23,6 +23,7 @@ const Header = () => {
             <Link to="/posts" className="nav-link mx-md-3 text-underline-none">
               Posts
             </Link>
+
             <Link to="/users" className="nav-link mx-md-3 text-underline-none">
               Users
             </Link>

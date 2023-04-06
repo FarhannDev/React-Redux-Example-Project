@@ -47,7 +47,7 @@ textarea {
 
 .postCard {
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 250px;
   margin-bottom: 13px;
   border: 1px solid #fff !important;
@@ -55,10 +55,10 @@ textarea {
   background-color: #090808 !important;
   box-shadow: none !important;
 }
-.postCard:hover {
-  animation: headShake; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
-}
+/* .postCard:hover {
+  animation: headShake; 
+  animation-duration: 2s; 
+} */
 .postCardDetail {
   width: 100%;
   height: auto;
@@ -102,6 +102,7 @@ textarea {
   color: #f1f1f1;
   padding: 3px;
   margin-bottom: 12px;
+  position: relative;
 }
 
 .reactionButton {
@@ -110,6 +111,7 @@ textarea {
   border: none;
   color: whitesmoke;
   font-size: 1rem;
+  margin-bottom: 30px;
 }
 
 .loader {

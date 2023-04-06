@@ -45,6 +45,7 @@ export default function CommentsAdd({ postId }) {
       <div>
         <div>
           <h3 className="mb-3">New Comments </h3>
+          <hr />
         </div>
         <div>
           <Form

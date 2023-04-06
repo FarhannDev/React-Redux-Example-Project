@@ -5,14 +5,14 @@ import { fetchComments } from "./app/services/commentsApi";
 import { router } from "./app/router/index";
 import { RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
+import Loading from "./components/utils/Loading";
 import * as React from "react";
 import * as ReactDOMClient from "react-dom/client";
-import Loading from "./components/utils/Loading";
 
 import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "/node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "/node_modules/animate.css/animate.css";
-import "./styles/global.css";
+import "./app/styles/global.css";
 
 // Redux create store
 store.dispatch(fetchPosts());

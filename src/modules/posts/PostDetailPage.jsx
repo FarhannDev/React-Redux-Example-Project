@@ -9,12 +9,12 @@ import { showToastNotification } from "../../utils/message";
 
 import PostAuthor from "../posts/PostAuthor";
 import PostTimeAgo from "../posts/PostTimeAgo";
-import ReactionButtons from "../posts/ReactionButtons";
+import ReactionButtons from "../reactions/ReactionButtons";
 import PostComment from "./PostComment";
 import CommentsAdd from "../comments/CommentsAdd";
 import Swal from "sweetalert2";
 
-export default function PostSinglePage() {
+export default function PostDetailPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate("/");
@@ -53,23 +53,22 @@ export default function PostSinglePage() {
     return (
       <>
         <div>
-          <Card.Title>
-            <h3>{post.title}</h3>
-          </Card.Title>
-        </div>
-        <div className="py-3">
-          <Card.Text>{post.body}</Card.Text>
-        </div>
-
-        <div>
           <span className="d-flex justify-content-arround">
             <PostAuthor userId={post.userId} />
             <PostTimeAgo timestamp={post.createdAt} />
           </span>
-          <div className="mb-3">
-            <ReactionButtons post={post} />
-          </div>
-          <hr />
+        </div>
+        <div>
+          <Card.Title>
+            <h2 className="text-capitalize">{post.title}</h2>
+          </Card.Title>
+        </div>
+        <div className="py-3 mb-3">
+          <Card.Text>{post.body}</Card.Text>
+        </div>
+
+        <div className="mb-3">
+          <ReactionButtons post={post} />
         </div>
       </>
     );
@@ -102,10 +101,11 @@ export default function PostSinglePage() {
     return (
       <>
         <Link
-          to="/posts"
+          to="#"
+          onClick={() => navigate(-1)}
           className="btn btn-link p-0 text-white text-decoration-none mb-3"
         >
-          <i className="fas fa-arrow-left"></i> Back To Posts
+          <i className="fas fa-arrow-left"></i> Back
         </Link>
       </>
     );
@@ -115,16 +115,26 @@ export default function PostSinglePage() {
     <>
       <Helmet>
         <title>{post?.title}</title>
-        <meta name="description" content="Helmet application" />
+        <meta
+          property="og:description"
+          content={`Read posts ${post.title.substring(0, 50)}...`}
+        />
+        <meta property="og:url" content="https://reduxblogapp.netlify.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="All Posts" />
       </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-5">
-        <Row className="flex-column g-3">
-          <Col>
+        <Row className="justify-content-center g-3">
+          <Col lg={8} md={10} sm={12}>
             <div>
+              <ButtonBack />
               <Card body className="postCardDetail">
-                <ButtonBack />
                 <RenderedPost />
+              </Card>
+              <Card body className="postCardDetail">
                 <PostComment postId={post.id} />
+              </Card>
+              <Card body className="postCardDetail">
                 <CommentsAdd postId={post.id} />
               </Card>
             </div>

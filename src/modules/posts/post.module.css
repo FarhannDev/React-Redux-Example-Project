@@ -1,0 +1,58 @@
+.postCard {
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+  margin-bottom: 13px;
+  border: 1px solid #fff !important;
+  border-radius: 8px !important;
+  background-color: #090808 !important;
+  box-shadow: none !important;
+}
+.postCard:hover {
+  animation: headShake; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
+.postCardDetail {
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+  margin-bottom: 13px;
+  border: 1px solid #fff !important;
+  border-radius: 8px !important;
+  background-color: #090808 !important;
+  box-shadow: none !important;
+}
+.postTitle {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #f1f1f1;
+  margin-bottom: 12px;
+  transition: ease-in-out 300ms;
+}
+.postTitle a:hover {
+  text-decoration: underline !important;
+}
+.postTitle a:focus {
+  color: blue !important;
+  text-decoration: underline !important;
+}
+.postTitle a:visited {
+  color: purple !important;
+  text-decoration: underline !important;
+}
+.postTitle a:link {
+  color: #f1f1f1 !important;
+}
+
+.postBody {
+  display: block;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  color: #f1f1f1;
+  padding: 3px;
+  margin-bottom: 12px;
+}

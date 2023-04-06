@@ -55,14 +55,18 @@ export default function PostAdd() {
     <>
       <Helmet>
         <title>Redux Blog - Create Posts</title>
-        <meta name="description" content="Helmet application" />
+        <meta property="og:description" content="Create New Posts" />
+        <meta property="og:url" content="https://reduxblogapp.netlify.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="New Posts" />
       </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3">
-        <Row className="flex-column g-3">
-          <Col>
+        <Row className="justify-content-center g-3">
+          <Col lg={8} md={10} sm={12}>
             <div className="py-3">
-              <Card body className="postCard ">
+              <Card body className="postCard px-md-2">
                 <PostTitle title="New Posts" />
+                <hr />
                 <Form onSubmit={onSubmitHandler} autoComplete="off">
                   <Form.Group className="mb-3">
                     <Form.Label>Post Title</Form.Label>
@@ -100,18 +104,22 @@ export default function PostAdd() {
                     />
                   </Form.Group>
 
-                  <div className="d-flex justify-content-end py-3">
-                    <Link to="/posts" className="btn btn-dark rounded btn-md">
-                      Cancel
-                    </Link>
+                  <div className="d-block py-3">
                     <Button
                       disabled={!onSaveItems}
-                      className="ms-2"
+                      className="d-block w-100 mb-3"
                       variant="primary"
                       type="submit"
                     >
                       Save Posts
                     </Button>
+                    <Link
+                      to="#"
+                      onClick={() => navigate(-1)}
+                      className="btn btn-dark rounded btn-md d-block w-100 mb-3"
+                    >
+                      Cancel
+                    </Link>
                   </div>
                 </Form>
               </Card>

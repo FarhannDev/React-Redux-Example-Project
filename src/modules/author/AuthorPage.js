@@ -25,17 +25,20 @@ export default function AuthorPage() {
     <>
       <Helmet>
         <title>Posts By {user?.name}</title>
-        <meta name="description" content="Helmet application" />
+        <meta property="og:description" content="Search and find posts" />
+        <meta property="og:url" content="https://reduxblogapp.netlify.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`Posts by ${user?.name}`} />
       </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3">
-        <Row className="flex-column g-3">
-          <Col>
+        <Row className="justify-content-center align-items-center g-3">
+          <Col lg={10} md={10} sm={12}>
             <div>
               <Link
                 to="/posts"
                 className="btn btn-link p-0 text-white text-decoration-none mb-3"
               >
-                <i className="fas fa-arrow-left"></i> Back To Posts
+                <i className="fas fa-arrow-left"></i> Back
               </Link>
 
               <div>

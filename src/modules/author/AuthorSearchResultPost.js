@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import ReactionButtons from "../posts/ReactionButtons";
+import ReactionButtons from "../reactions/ReactionButtons";
 import PostTimeAgo from "../posts/PostTimeAgo";
 import PostAuthor from "../posts/PostAuthor";
 import Message from "../../components/utils/Message";

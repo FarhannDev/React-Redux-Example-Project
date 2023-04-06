@@ -12,7 +12,7 @@ export default function PostTimeAgo({ timestamp }) {
   return (
     <div className="mb-3">
       <span title={timestamp}>
-        &nbsp; <i>{timeAgo}</i>
+        <i>{timeAgo}</i>
       </span>
     </div>
   );

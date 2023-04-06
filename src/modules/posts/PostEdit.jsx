@@ -71,11 +71,12 @@ export default function PostEdit() {
         <meta name="description" content="Helmet application" />
       </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3">
-        <Row className="flex-column g-3">
-          <Col>
+        <Row className="justify-content-center g-3">
+          <Col lg={8} md={10} sm={12}>
             <div className="py-3">
               <Card body className="postCard">
                 <PostTitle title="Edit Posts" />
+                <hr />
                 <Form onSubmit={onSubmitHandler} autoComplete="off">
                   <Form.Group className="mb-3">
                     <Form.Label>Post Title</Form.Label>
@@ -113,21 +114,22 @@ export default function PostEdit() {
                     />
                   </Form.Group>
 
-                  <div className="d-flex justify-content-end py-3">
-                    <Link
-                      to={`/posts/${id}`}
-                      className="btn btn-dark rounded btn-md"
-                    >
-                      Cancel
-                    </Link>
+                  <div className="d-block w-100 py-3">
                     <Button
                       disabled={!onSaveItems}
-                      className="ms-2"
+                      className="d-block w-100 mb-3"
                       variant="primary"
                       type="submit"
                     >
                       Update Posts
                     </Button>
+                    <Link
+                      to="#"
+                      onClick={() => navigate(-1)}
+                      className="btn btn-dark rounded btn-md d-block w-100"
+                    >
+                      Cancel
+                    </Link>
                   </div>
                 </Form>
               </Card>

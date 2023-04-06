@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectAllUsers } from "../../app/helpers/usersSlice";
 
-export default function UsersList() {
+export default function UserPage() {
   const users = useSelector(selectAllUsers);
 
   const renderedUsers = users?.map((user, index) => (
@@ -39,8 +39,8 @@ export default function UsersList() {
         <meta name="description" content="Helmet application" />
       </Helmet>
       <Container className="d-block w-100 pt-5 py-5 mt-3  ">
-        <Row className="flex-column g-3">
-          <Col>
+        <Row className="justify-content-center g-3">
+          <Col lg={8} md={10} sm={12}>
             <div>
               <h1 className="text-capitalize fw-bolder pt-5 mb-3">
                 List All Users
